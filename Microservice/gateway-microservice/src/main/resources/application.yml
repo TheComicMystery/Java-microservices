@@ -1,0 +1,27 @@
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    groups:
+      enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - url: /api/reviews/v3/api-docs
+        name: Reviews Microservice
+      - url: /api/products/v3/api-docs
+        name: Products Microservice
+
+server:
+  port: 9000
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/api/products/**
+        - id: review-service
+          uri: lb://review-service
+          predicates:
+            - Path=/api/reviews/**

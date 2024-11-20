@@ -1,0 +1,8 @@
+springdoc:
+  api-docs:
+    path: /api/reviews/api-docs
+  swagger-ui:
+    path: /api/reviews/swagger-ui/index.html
+
+server:
+  port: 8081
